@@ -36,6 +36,10 @@
 <script>
 export default {
   name: 'hello',
+  ready: function () {
+    // this.$http.get('/someUrl', {params}).then(successCallback, errorCallback)
+    // this.$http.post('/someUrl', {params}).then(successCallback, errorCallback)
+  },
   methods: {
     handleClickItem: function (index) {
       this.showPerson = []
@@ -51,7 +55,18 @@ export default {
       this.showPerson = newShowPerson
     },
     handleInput: function () {
-      console.log(111)
+      // GET /someUrl
+      this.$http.get('static/search.json').then((response) => {
+        // success callback
+        this.person = [{
+          ID: '1520291',
+          Name: '付文芳',
+          Dept: '\u540e\u53f0\u5f00\u53d1\u90e8',
+          Avatar: 'http://test.staticoss.upesn.com/1/2253/201605/25/146416176623157a75a2112b21c9eacf9d520ed912.jpg.thumb.jpg'
+        }]
+      }, (response) => {
+        // error callback
+      })
     }
   },
   data () {
